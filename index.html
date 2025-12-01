@@ -1,17 +1,49 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Fall Detection App</title>
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Emergency Fall Detection</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <h2>Real-Time Fall Detection System</h2>
-  <button onclick="startApp()">Start Detection</button>
+  <!-- Loading Screen -->
+  <div id="loadingScreen">
+    <div class="loader"></div>
+    <p>Initializing Sensors...</p>
+  </div>
 
+  <!-- Dark Mode Toggle -->
+  <button class="dark-toggle" id="themeToggle">🌙</button>
+
+  <!-- Emergency Alert Banner -->
+  <div id="alertBanner" class="hidden">⚠ Possible Fall Detected! Sending Alert...</div>
+
+  <div class="container">
+    <h1>Emergency Fall Detection</h1>
+
+    <button id="startBtn" class="btn">Start Detection</button>
+    <button id="stopBtn" class="btn stop">Stop Detection</button>
+
+    <div class="status-card">
+      <h3>Sensor Status</h3>
+      <p id="sensorStatus">Idle</p>
+    </div>
+
+    <div class="chart-card">
+      <h3>Live Accelerometer Graph</h3>
+      <canvas id="accelChart"></canvas>
+    </div>
+
+    <!-- PWA Install Button -->
+    <button id="installBtn" class="btn install hidden">Install App</button>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="sensor.js"></script>
   <script src="detector.js"></script>
   <script src="api.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
+
