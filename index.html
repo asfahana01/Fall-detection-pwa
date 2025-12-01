@@ -1,49 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Emergency Fall Detection</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <!-- Loading Screen -->
-  <div id="loadingScreen">
-    <div class="loader"></div>
-    <p>Initializing Sensors...</p>
-  </div>
-
-  <!-- Dark Mode Toggle -->
-  <button class="dark-toggle" id="themeToggle">🌙</button>
-
-  <!-- Emergency Alert Banner -->
-  <div id="alertBanner" class="hidden">⚠ Possible Fall Detected! Sending Alert...</div>
-
-  <div class="container">
-    <h1>Emergency Fall Detection</h1>
-
-    <button id="startBtn" class="btn">Start Detection</button>
-    <button id="stopBtn" class="btn stop">Stop Detection</button>
-
-    <div class="status-card">
-      <h3>Sensor Status</h3>
-      <p id="sensorStatus">Idle</p>
-    </div>
-
-    <div class="chart-card">
-      <h3>Live Accelerometer Graph</h3>
-      <canvas id="accelChart"></canvas>
-    </div>
-
-    <!-- PWA Install Button -->
-    <button id="installBtn" class="btn install hidden">Install App</button>
-  </div>
-
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <h1>🛡 FallGuard</h1>
+    <button id="darkToggle" class="icon-btn">🌙</button>
+  </nav>
+
+  <!-- CONTAINER -->
+  <div class="container">
+
+    <!-- ALERT BANNER -->
+    <div id="alertBanner" class="alert hidden">
+      ⚠ Fall Detected! Sending Alert...
+    </div>
+
+    <!-- MAIN CARD -->
+    <div class="card">
+      <h2>Real-Time Fall Detection</h2>
+
+      <div class="btn-row">
+        <button class="primary-btn" onclick="startDetection()">▶ Start</button>
+        <button class="danger-btn" onclick="stopDetection()">■ Stop</button>
+      </div>
+
+      <p class="label">Sensor Status</p>
+      <p id="sensorStatus" class="status idle">Idle</p>
+
+      <p class="label">Live Acceleration Graph</p>
+      <canvas id="accelChart"></canvas>
+
+      <button id="installBtn" class="install-btn hidden">⬇ Install App</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
   <script src="sensor.js"></script>
   <script src="detector.js"></script>
   <script src="api.js"></script>
-  <script src="app.js"></script>
+
 </body>
 </html>
-
